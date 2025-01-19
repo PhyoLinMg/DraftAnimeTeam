@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,13 +13,13 @@ class Battle extends Model
     //
     protected $table = 'battles';
 
-    protected $fillable = ['player_1_id', 'player_2_id'];
+    protected $fillable = ['board_id'];
 
-    public function playerOne(){
-        return $this->belongsTo(PlayerOne::class);
+    public function players(): BelongsToMany{
+        return $this->belongsToMany(Player::class);
     }
 
-    public function playerTwo(){
-        return $this->belongsTo(PlayerTwo::class);
+    public function characters(): BelongsToMany{
+        return $this->belongsToMany(Character::class);
     }
 }

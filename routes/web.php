@@ -13,3 +13,6 @@ Route::post('/animes', [AnimeController::class, 'store'])->name('animes.store');
 
 Route::get('/characters', [CharacterController::class, 'index'])->name('characters.index');
 Route::post('/characters', [CharacterController::class, 'store'])->name('characters.store');
+
+
+
