@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Board extends Model
 {
@@ -11,10 +13,14 @@ class Board extends Model
     use HasFactory;
     protected $table = 'boards';
 
-    protected $fillable = ['role_1', 'role_2', 'role_3', 'role_4', 'role_5', 'role_6'];
+    protected $fillable = ['name'];
 
-    public function battle()
+
+    public function battle():BelongsTo
     {
         return $this->belongsTo(Battle::class);
+    }
+    public function roles():BelongsToMany{
+        return $this->belongsToMany(Role::class);
     }
 }

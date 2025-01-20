@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('board_role', function (Blueprint $table) {
             $table->id();
-            $table->integer('role_id');
-            $table->integer('board_id');
+            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('board_id');
             $table->timestamps();
         });
     }

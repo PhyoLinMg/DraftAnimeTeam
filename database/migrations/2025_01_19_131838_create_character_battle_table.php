@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('character_battle', function (Blueprint $table) {
             $table->id();
-            $table->integer('character_id');
-            $table->integer('role_id');
-            $table->integer('battle_id');
-            $table->integer('player_id');
+            $table->unsignedBigInteger('character_id');
+            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('battle_id');
+            $table->unsignedBigInteger('player_id');
             $table->timestamps();
         });
     }

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('battle_player', function (Blueprint $table) {
             $table->id();
-            $table->integer('battle_id');
-            $table->integer('player_id');
+            $table->unsignedBigInteger('battle_id');
+            $table->unsignedBigInteger('player_id');
             $table->boolean('skip')->default(false);
             $table->timestamps();
         });

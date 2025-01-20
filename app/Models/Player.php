@@ -15,6 +15,6 @@ class Player extends Model
     protected $fillable = ['player_type', 'name'];
 
     public function battles(): BelongsToMany{
-        return $this->belongsToMany(Battle::class);
+        return $this->belongsToMany(Battle::class)->withPivot('skip');
     }
 }

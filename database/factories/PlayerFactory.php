@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Board>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Player>
  */
-class BoardFactory extends Factory
+class PlayerFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,7 +18,8 @@ class BoardFactory extends Factory
     {
         return [
             //
-            'name'=> 'board 1'
+            'player_type'=> 'player_one',
+            'name' => fake()-> name()
         ];
     }
 }

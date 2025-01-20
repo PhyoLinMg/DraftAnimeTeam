@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Board>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Battle>
  */
-class BoardFactory extends Factory
+class BattleFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,7 @@ class BoardFactory extends Factory
     public function definition(): array
     {
         return [
-            //
-            'name'=> 'board 1'
+            'board_id'=>1,
         ];
     }
 }
