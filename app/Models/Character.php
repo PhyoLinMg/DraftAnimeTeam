@@ -19,6 +19,10 @@ class Character extends Model
     {
         return $this->belongsTo(Anime::class,'anime_id');
     }
+    
+    public function tags(): BelongsToMany{
+        return $this->belongsToMany(Tag::class);
+    }
 
     public function battles(): BelongsToMany{
         return $this->belongsToMany(Battle::class)->withPivot('role_id','player_id');
