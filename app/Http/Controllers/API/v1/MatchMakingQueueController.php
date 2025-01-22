@@ -40,6 +40,7 @@ class MatchMakingQueueController extends Controller
             }
 
             $matches = [];
+            //TODO: send the websocket broadcast to the players who are waiting for the queue.
 
             for ($x = 0; $x < $pendings->count(); $x += 2) {
                 // Update status for both players

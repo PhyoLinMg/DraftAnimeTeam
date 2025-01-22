@@ -17,7 +17,6 @@ return new class extends Migration
             $table->unsignedBigInteger('battle_id');
             $table->unsignedBigInteger('role_id');
             $table->unsignedBigInteger('player_id');
-            $table->timestamps();
         });
     }
 

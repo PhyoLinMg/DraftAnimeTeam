@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             PlayerSeeder::class,
             AnimeCharacterSeeder::class,
+            MatchQueueSeeder::class,
         ]);
     }
 }

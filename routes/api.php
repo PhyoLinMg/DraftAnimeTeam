@@ -21,4 +21,5 @@ Route::prefix('v1')->group(function(){
     Route::get('match', [MatchMakingQueueController::class,'match']);
 
     Route::get('random', [PlayerController::class,'showCharacter']);
+    Route::post('characters/pick', [PlayerController::class,'assignCharacterToPlayer']);
 });
