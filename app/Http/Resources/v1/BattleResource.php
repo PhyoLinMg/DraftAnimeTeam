@@ -15,7 +15,9 @@ class BattleResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'players'=> $this-> players(),
+            'players'=> $this-> players()->get(),
+            'characters'=> $this->characters()->get(),
+            'board'=> $this->board()->get()->first()->name,
         ];
     }
 }

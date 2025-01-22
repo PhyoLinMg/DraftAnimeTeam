@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('match_making_queues', function (Blueprint $table) {
             $table->id();
             $table->string('player_name');
+            $table->enum('status',['pending','matched']);
             $table->timestamps();
         });
     }

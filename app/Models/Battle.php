@@ -25,6 +25,6 @@ class Battle extends Model
     }
 
     public function characters(): BelongsToMany{
-        return $this->belongsToMany(Character::class)->withPivot('role_id','player_id');
+        return $this->belongsToMany(Character::class,'character_battle')->withPivot('role_id','player_id');
     }
 }

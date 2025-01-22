@@ -3,7 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\API\v1;
+use App\Http\Controllers\API\v1\BattleController;
+use App\Http\Controllers\API\v1\MatchMakingQueueController;
+use App\Http\Controllers\API\v1\BoardController;
+use App\Http\Controllers\API\v1\PlayerController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -14,4 +17,8 @@ Route::get('/user', function (Request $request) {
 Route::prefix('v1')->group(function(){
     Route::apiResource('battles',BattleController::class);
     Route::apiResource('boards',BoardController::class);
+    Route::post('queue', [MatchMakingQueueController::class,'create']);
+    Route::get('match', [MatchMakingQueueController::class,'match']);
+
+    Route::get('random', [PlayerController::class,'showCharacter']);
 });
