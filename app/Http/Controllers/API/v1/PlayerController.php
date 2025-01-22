@@ -18,6 +18,10 @@ class PlayerController extends Controller
     public function showCharacter(){
         return new CharacterResource($this->randomCharacterRepository->pickRandomCharacter(1));
     } 
+
+    public function skip(Request $request){
+        
+    }
     // Request will be role_id, player_id and character_id(random), battle_id
     public function assignCharacterToPlayer(Request $request){
         $characterId = $request->character_id;
@@ -27,9 +31,10 @@ class PlayerController extends Controller
 
         $battle= Battle::find($battleId);   
         $battle->characters()->attach($characterId, ['role_id'=> $roleId, 'player_id'=> $playerId]);
-        // $battle->save();
+
 
         //TODO: send websocket broadcast to reflect the UI.
+
     }
 
 }

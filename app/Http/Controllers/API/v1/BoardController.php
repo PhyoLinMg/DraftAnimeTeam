@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\v1\BoardResource;
+use App\Models\Board;
 use Illuminate\Http\Request;
 
 class BoardController extends Controller
@@ -13,6 +15,7 @@ class BoardController extends Controller
     public function index()
     {
         //
+        return BoardResource::collection(Board::all());
     }
 
     /**

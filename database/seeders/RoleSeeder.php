@@ -14,6 +14,6 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        Board::factory(1)->hasAttached(Role::factory()->count(3))->create();
+        Board::factory(1)->hasAttached(Role::factory()->count(6))->create();
     }
 }
