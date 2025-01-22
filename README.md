@@ -2,7 +2,11 @@
 
 # Draft Anime Team
 
-You pick your captain, vice captain, healer, tank, 2 support and battle against other team. 
+In the board, You pick your captain, vice captain, healer, tank, 2 support and battle against other team. 
+
+Other boards will be supported soon.
+- Waifu Board
+
 
 Since the people have different opinions, we will not decide the winner for you but we will not forget your battle.
 
