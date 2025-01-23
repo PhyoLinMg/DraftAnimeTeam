@@ -20,7 +20,18 @@ class PlayerController extends Controller
     } 
 
     public function skip(Request $request){
-        
+        $battleId= $request->battle_id;
+        $playerId= $request->player_id;
+        $battle= Battle::find($battleId);
+        $skip= $battle->players()->where('player_id', $playerId)->first()->pivot->skip;
+        if($skip==false){
+            $this->showCharacter();
+            $battle->players()->updateExistPivot($playerId, ['skip'=> true]);
+        }else{
+            return response()->json([
+                'message'=> "you cannot skip anymore",
+            ],500);
+        }
     }
     // Request will be role_id, player_id and character_id(random), battle_id
     public function assignCharacterToPlayer(Request $request){

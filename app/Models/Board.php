@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\BoardType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -21,5 +22,11 @@ class Board extends Model
     }
     public function roles():BelongsToMany{
         return $this->belongsToMany(Role::class);
+    }
+
+    protected function casts(): array {
+        return [
+            'type'=> BoardType::class,
+        ];
     }
 }

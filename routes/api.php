@@ -22,4 +22,5 @@ Route::prefix('v1')->group(function(){
 
     Route::get('random', [PlayerController::class,'showCharacter']);
     Route::post('characters/pick', [PlayerController::class,'assignCharacterToPlayer']);
+    Route::post('players/skip', [PlayerController::class,'skip']);
 });
