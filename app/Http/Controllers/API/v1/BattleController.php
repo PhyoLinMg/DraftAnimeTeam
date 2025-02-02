@@ -16,7 +16,7 @@ class BattleController extends Controller
     public function index()
     {
         //
-        $battles= Battle::all();
+        $battles= Battle::paginate(10);
         return new BattleCollection($battles);
     }
 

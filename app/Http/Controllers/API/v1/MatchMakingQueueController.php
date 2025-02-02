@@ -5,7 +5,8 @@ namespace App\Http\Controllers\API\v1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MatchMakingQueue;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Enums\Status;
 use App\Models\Battle;
 use App\Models\Player;
@@ -14,14 +15,45 @@ class MatchMakingQueueController extends Controller
 {
     //
     public function create(Request $request)
-    {
-        if ($request->name != null) {
-            MatchMakingQueue::create([
-                'player_name' => $request->name,
-                'status' => 'pending'
-            ]);
-        }
+{
+    try {
+        // Validate the incoming request
+        $validatedData = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'min:3', 'max:255']
+        ])->validate();
+
+        // Create new queue entry
+        $queue = MatchMakingQueue::create([
+            'player_name' => $validatedData['name'],
+            'status' => 'pending'
+        ]);
+
+        // Return success response
+        return response()->json([
+            'message' => 'Player successfully added to queue',
+            'data' => [
+                'id' => $queue->id,
+                'player_name' => $queue->player_name,
+                'status' => $queue->status
+            ],
+            'status' => 'success'
+        ], 201);
+
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        // Return validation error response
+        return response()->json([
+            'message' => 'Validation errors',
+            'errors' => $e->validator->errors(),
+            'status' => 'error'
+        ], 422);
+    } catch (\Exception $e) {
+        // Return generic error response for unexpected exceptions
+        return response()->json([
+            'message' => 'An unexpected error occurred while processing your request',
+            'status' => 'error'
+        ], 500);
     }
+}
     public function match()
     {
         try {
