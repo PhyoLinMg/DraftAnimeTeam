@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\v1\BattleCollection;
 use App\Models\Battle;
+use App\Jobs\TestJob;
 use App\Http\Resources\v1\BattleResource;
 
 class BattleController extends Controller
@@ -16,7 +17,10 @@ class BattleController extends Controller
     public function index()
     {
         //
-        $battles= Battle::paginate(10);
+
+
+        $battles= Battle::paginate(2);
+        TestJob::dispatch();
         return new BattleCollection($battles);
     }
 

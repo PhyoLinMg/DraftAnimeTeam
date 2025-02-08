@@ -16,7 +16,7 @@ class BattleResource extends JsonResource
     {
         return [
             'players'=> $this-> players()->get(),
-            'characters'=> BattleRoleResource::collection($this->characters()->get()),
+            'characters'=> BattleRoleResource::collection(resource: $this->characters()->get()),
             'board'=> $this->board()->get()->first()->name,
         ];
     }
